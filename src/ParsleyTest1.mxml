@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:parsley="http://www.spicefactory.org/parsley"
+			   xmlns:testapp="testapp.*"
+			   width="500" height="500">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import spark.events.IndexChangeEvent;
+			
+			[Inject] public var model:MainModel;
+			
+			private function cbChangeHandler(event:IndexChangeEvent):void
+			{
+				model.switchOption(event.newIndex);
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<parsley:ContextBuilder config="ParsleyConf"/>
+		<parsley:Configure/>
+	</fx:Declarations>
+	
+	<testapp:MySquare/>
+	
+	<s:ComboBox id="cb" x="10" y="10" change="cbChangeHandler(event)">
+		<s:dataProvider>
+			<s:ArrayCollection>
+				<fx:int>0</fx:int>
+				<fx:int>1</fx:int>
+				<fx:int>2</fx:int>
+				<fx:int>3</fx:int>
+			</s:ArrayCollection>
+		</s:dataProvider>
+	</s:ComboBox>
+</s:Application>

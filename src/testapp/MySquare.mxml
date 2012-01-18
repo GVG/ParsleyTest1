@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:BorderContainer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+				   xmlns:s="library://ns.adobe.com/flex/spark" 
+				   xmlns:mx="library://ns.adobe.com/flex/mx" width="{model.size}" height="{model.size}" backgroundColor="{model.color}"
+				   verticalCenter="{model.verticalCenter}" top="{model.top}" horizontalCenter="{model.horizontalCenter}" left="{model.left}"
+				   xmlns:parsley="http://www.spicefactory.org/parsley" xmlns:testapp="testapp.*">
+	<fx:Script>
+		<![CDATA[
+			[Inject] [Bindable] public var model:MySquareModel;
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<parsley:Configure/>
+	</fx:Declarations>
+	
+	<s:Label id="mylabel" horizontalCenter="0" verticalCenter="0" text="{model.text}"/>
+	<testapp:SquareWebData includeInLayout="{model.showData}" visible="{model.showData}"/>
+</s:BorderContainer>
